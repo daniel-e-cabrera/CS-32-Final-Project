@@ -30,9 +30,9 @@ def find_next_shuttle(current_time, shuttle_times):
 
 
 def main():
-   current_time = datetime.now() 
+    current_time = datetime.now() 
     # extract current time 
-    
+
     #Google Maps
     # import googlemaps data
 
