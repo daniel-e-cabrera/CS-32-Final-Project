@@ -10,7 +10,7 @@ For Step 4, we chose the “Shuttle Walk Timing Calculator” as our final proje
   PassioGo is a rather secure database, so it is not likely that we would be able to access their data. To circumvent this, we used scheduled bus times. The morning shuttles are typically consistent every five minutes, so we decided to focus on one shuttle arriving at the Widener gate, going to the quad, with service time beginning at 4:20 P.M. We needed to manually enter the scheduled bus times, as well as specific start locations such as "River East, River West, and Lamont". 
   We used Generative AI to assist us in writing the code regarding the API package and key download for the Open Route Service. Aside from any subtle stylistic choices made to improve the program's efficiency, debugging code, or unknown syntax, such as the change from military to standard time, the rest of the code was written by us. 
 
-## Updated Description of Our Project Does and Instructions for Running Our Code 4/22/26
+## Updated Description Of What Our Project Does And Instructions For Running Our Code 4/22/26
 The “Shuttle Walk Timing Calculator” is a model that determines whether a user will make a shuttle based on walking time (using Open Route Service) and the Quad-Yard Shuttle set schedule, and then recommends when a user should leave to avoid missing it.
 
 When usiing our calculator, the question asked will be: 
