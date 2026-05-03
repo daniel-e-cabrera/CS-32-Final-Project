@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 import openrouteservice
 
 # Initialize API client
-client = openrouteservice.Client(key="eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImU5N2RkYWJiMjQ1NDRjNGM5M2E1Nzk5ZTU4ZGNlNjBhIiwiaCI6Im11cm11cjY0In0=")
+client = openrouteservice.Client(key=*****)
 
 
 def will_make_shuttle(current_time, walking_minutes, shuttle_arrival_time):
