@@ -23,3 +23,63 @@ Walking time to Widener Gate: 1.8 minutes
 Next shuttle: 07:40 PM
 Leave by: 07:38 PM
 Will you make it? Yes
+
+
+## Final Updates 5/04/26
+From our previous 4/22/26 updates, we have made a lot of new updates. In particular, we introduced a more advanced shuttle prediction system by estimating bus arrival times based on route segments rather than relying purely on fixed schedules. By assigning approximate travel times between stops (route segments), our model can accurately estimate where a shuttle is along its route and how long it will take to reach a given pickup location. This was done using the live data from PassioGo. Notably, incorporating this data was a major challenege. After attempting to work with the vehicles class, we learned that it gave latitude but not longitude. Therefore, we could not gather accurate coordinates from the live shuttle tracking. Therefore, we have to work more with the route class in order to find a work around solution. Additionally, another major improvement was optimizing how we select relevant shuttles. Instead of checking every available vehicle, we narrowed our search to the closest shuttles and filtered only routes that include both the pickup and destination stops. This significantly improved efficiency and made predictions more realistic.
+
+## Final 05/04 Description Of What Our Project Does And Instructions For Running Our Code
+The “Shuttle Planner” is a model that determines whether a user will make a shuttle based on walking time (using Open Route Service) and PassioGo live data, and then recommends when a user should leave to avoid missing it.
+
+When usiing our calculator, a few questions will be: 
+
+Enter your OpenRouteService API key:
+
+Available starting locations:
+1. Lamont
+2. River Central
+3. River East
+4. River West
+5. Science Center
+Enter number:
+
+Available stops:
+- SEC
+- Barry's Corner (Northbound)
+- Stadium (Northbound)
+- Kennedy School (Northbound)
+- Harvard Square (Northbound)
+- Law School (WCC)
+- Maxwell Dworkin
+- Science Center
+- Memorial Hall
+- Lamont Library
+- Leverett House
+- 1 Western Ave
+- Mather House
+- The Inn
+- Widener Gate
+- Quad
+- Radcliffe Yard
+- Mass and Garden
+- Winthrop House
+- Harvard Square (Southbound)
+Enter pickup stop: 
+Enter destination stop:
+
+After you have inserted these inputs, the shuttle planner will run and give an output that looks like this: 
+(example)
+────────────────────────────────
+🚍 Shuttle Planner
+────────────────────────────────
+💨 Leaving: Lamont
+📍 From: Lamont Library
+🎯 To:   Quad
+
+🚶 Walk time: 0.2 min
+
+🚌 Next shuttle: 06:00 PM (Bus EV-4)
+⏳ Leave by:     05:59 PM
+
+✅ You will make it! Have a great day! #GO QUAD
+────────────────────────────────
