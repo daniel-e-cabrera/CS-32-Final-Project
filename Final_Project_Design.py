@@ -1,26 +1,32 @@
+#importing the necessary information to run this code 
 from datetime import datetime, timedelta
-from zoneinfo import ZoneInfo
-import openrouteservice
+from zoneinfo import ZoneInfo # this handles time zones, since we're on EST 
+import openrouteservice 
 import passiogo
 
-api_key = input("Enter your OpenRouteService API key: ").strip()
+# no longer have our personalized key included, now prompts user for their own
+api_key = input("Enter your OpenRouteService API key: ").strip() # user must enter their personalized openroute service API key 
 client = openrouteservice.Client(key=api_key)
 # Specifying that we want Harvard University Passio Go data
-system = passiogo.getSystemFromID(831)
+system = passiogo.getSystemFromID(831) # 831 is Harvard specific code 
 
 # How long it takes (in minutes) to get from each stop to the next for the three main routes
+# these are hard-coded examples of the timing for each stop, may not be accurate depending on traffic 
 route_segment_times = {"Quad Express": [1.0, 2.0, 0.5, 10.0, 5.0, 2.0, 3.0], "SEC Express": [2.0, 3.0, 7.0, 3.0, 3.0, 4.0, 6.0, 3.0, 5.0], "Quad Yard Express": [2.0, 10.0, 1.0, 1.2, 1.0, 4.0]}
 
 # Helper Functions
 def will_make_shuttle(current_time, walking_minutes, shuttle_arrival_time):
     return current_time + timedelta(minutes=walking_minutes) <= shuttle_arrival_time
+    # determines whether the user will get to the shuttle based on when it's arriving, the walking time, and the current time 
 
 def recommended_leave_time(walking_minutes, shuttle_arrival_time):
     return shuttle_arrival_time - timedelta(minutes=walking_minutes)
+    # determines the time the user should leave based on when the shuttle is arriving and how long it'll take to get to the stop 
 
 def get_walking_time(start_coords, end_coords):
     route = client.directions(coordinates=[start_coords, end_coords],profile='foot-walking')
     return route['routes'][0]['summary']['duration'] / 60
+    # calculates the walking time using start and end coordinates 
 
 # Shuttle Tracking Function
 def get_next_shuttle_from_passio(system, pickup, destination, current_time):
@@ -149,21 +155,21 @@ def get_next_shuttle_from_passio(system, pickup, destination, current_time):
     return []
 
 #Evaluation
-def evaluate_stop(system, start_coords, pickup, destination, current_time):
-    walking_minutes = get_walking_time(start_coords, (pickup.longitude, pickup.latitude))
-    shuttles = get_next_shuttle_from_passio(system, pickup, destination, current_time)
-    next_shuttle = None
-    next_vehicle = None
+def evaluate_stop(system, start_coords, pickup, destination, current_time): # evaluating your trip 
+    walking_minutes = get_walking_time(start_coords, (pickup.longitude, pickup.latitude)) # getting the minutes needed to walk 
+    shuttles = get_next_shuttle_from_passio(system, pickup, destination, current_time) # grabs shuttles from passiogo data 
+    next_shuttle = None # don't know which shuttle you will take 
+    next_vehicle = None # don't know what vehicle number it is 
 
-    for s in shuttles:
-        if s["time"] > current_time:
-            next_shuttle = s["time"]
-            next_vehicle = s["vehicle"]
+    for s in shuttles: # loop through all shuttle options 
+        if s["time"] > current_time: # as soon as you find the first shuttle 
+            next_shuttle = s["time"] # mark it's time
+            next_vehicle = s["vehicle"] # mark the vehicle 
             break
 
-    if next_shuttle is None:
-        next_shuttle = current_time + timedelta(minutes=45)
-        next_vehicle = "Unknown"
+    if next_shuttle is None: # if no data or no future buses 
+        next_shuttle = current_time + timedelta(minutes=45) # predict the next shuttle will come on default time of 45 minutes  
+        next_vehicle = "Unknown" # don't know what shuttle it'll be so label generically 
 
     leave_time = recommended_leave_time(walking_minutes, next_shuttle)
     can_make_it = will_make_shuttle(current_time, walking_minutes, next_shuttle)
