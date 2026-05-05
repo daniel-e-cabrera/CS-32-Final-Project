@@ -31,8 +31,11 @@ From our previous 4/22/26 updates, we have made a lot of new updates. In particu
 ## Final 05/04/26 Description Of What Our Project Does And Instructions For Running Our Code
 The “Shuttle Planner” is a model that determines whether a user will make a shuttle based on walking time (using Open Route Service) and PassioGo live data, and then recommends when a user should leave to avoid missing it. To use our model, one will need to
 from datetime import datetime, timedelta
-from zoneinfo import ZoneInfo # this handles time zones, since we're on EST 
+
+from zoneinfo import ZoneInfo # this handles time zones, since we're on EST
+
 import openrouteservice 
+
 import passiogo
 
 When using our calculator, a few questions will be asked: 
