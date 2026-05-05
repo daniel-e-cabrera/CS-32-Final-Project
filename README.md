@@ -70,7 +70,8 @@ Enter destination stop:
 
 After you have inserted these inputs, the shuttle planner will run and give an output that looks like this: 
 (example)
-🚍 Shuttle Planner
+
+/n 🚍 Shuttle Planner
 
 💨 Leaving: Lamont
 📍 From: Lamont Library
