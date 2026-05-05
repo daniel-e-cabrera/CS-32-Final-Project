@@ -31,9 +31,9 @@ From our previous 4/22/26 updates, we have made a lot of new updates. In particu
 ## Final 05/04/26 Description Of What Our Project Does And Instructions For Running Our Code
 The “Shuttle Planner” is a model that determines whether a user will make a shuttle based on walking time (using Open Route Service) and PassioGo live data, and then recommends when a user should leave to avoid missing it.
 
-When using our calculator, a few questions will be: 
+When using our calculator, a few questions will be asked: 
 
-Enter your OpenRouteService API key:
+Enter your OpenRouteService API key: (each person should create their own account with Open Route Service and have their own personal key)
 
 Available starting locations:
 1. Lamont
@@ -42,7 +42,7 @@ Available starting locations:
 4. River West
 5. Science Center
    
-Enter number:
+Enter number: (selection your starting region, where you are coming from)
 
 Available stops:
 - SEC
@@ -65,8 +65,8 @@ Available stops:
 - Mass and Garden
 - Winthrop House
 - Harvard Square (Southbound)
-Enter pickup stop: 
-Enter destination stop:
+Enter pickup stop: (self explanatory)
+Enter destination stop:(self explanatory)
 
 After you have inserted these inputs, the shuttle planner will run and give an output that looks like this: 
 (example)
@@ -74,12 +74,15 @@ After you have inserted these inputs, the shuttle planner will run and give an o
 🚍 Shuttle Planner
 
 💨 Leaving: Lamont
+
 📍 From: Lamont Library
+
 🎯 To:   Quad
 
 🚶 Walk time: 0.2 min
 
 🚌 Next shuttle: 06:00 PM (Bus EV-4)
+
 ⏳ Leave by:     05:59 PM
 
 ✅ You will make it! Have a great day! #GO QUAD
