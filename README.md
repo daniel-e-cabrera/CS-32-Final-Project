@@ -29,7 +29,14 @@ Will you make it? Yes
 From our previous 4/22/26 updates, we have made a lot of new updates. In particular, we introduced a more advanced shuttle prediction system by estimating bus arrival times based on route segments rather than relying purely on fixed schedules. By assigning approximate travel times between stops (route segments), our model can accurately estimate where a shuttle is along its route and how long it will take to reach a given pickup location. This was done using the live data from PassioGo. Notably, incorporating this data was a major challenge. After attempting to work with the vehicles class, we learned that it gave latitude but not longitude. Therefore, we could not gather accurate coordinates from the live shuttle tracking. Therefore, we have to work more with the route class in order to find a workaround solution. Additionally, another major improvement was optimizing how we select relevant shuttles. Instead of checking every available vehicle, we narrowed our search to the closest shuttles and filtered only routes that include both the pickup and destination stops. This significantly improved efficiency and made predictions more realistic. In order to make this possible, we used Generative AI to help understand this process of using latitude and new syntax like float. 
 
 ## Final 05/04/26 Description Of What Our Project Does And Instructions For Running Our Code
-The “Shuttle Planner” is a model that determines whether a user will make a shuttle based on walking time (using Open Route Service) and PassioGo live data, and then recommends when a user should leave to avoid missing it.
+The “Shuttle Planner” is a model that determines whether a user will make a shuttle based on walking time (using Open Route Service) and PassioGo live data, and then recommends when a user should leave to avoid missing it. To use our model, one will need to
+from datetime import datetime, timedelta
+
+from zoneinfo import ZoneInfo # this handles time zones, since we're on EST 
+
+import openrouteservice 
+
+import passiogo
 
 When using our calculator, a few questions will be asked: 
 
