@@ -70,9 +70,8 @@ Enter destination stop:
 
 After you have inserted these inputs, the shuttle planner will run and give an output that looks like this: 
 (example)
-────────────────────────────────
 🚍 Shuttle Planner
-────────────────────────────────
+
 💨 Leaving: Lamont
 📍 From: Lamont Library
 🎯 To:   Quad
@@ -83,4 +82,3 @@ After you have inserted these inputs, the shuttle planner will run and give an o
 ⏳ Leave by:     05:59 PM
 
 ✅ You will make it! Have a great day! #GO QUAD
-────────────────────────────────
