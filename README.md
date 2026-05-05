@@ -65,7 +65,9 @@ Available stops:
 - Mass and Garden
 - Winthrop House
 - Harvard Square (Southbound)
+  
 Enter pickup stop: (self explanatory)
+
 Enter destination stop:(self explanatory)
 
 After you have inserted these inputs, the shuttle planner will run and give an output that looks like this: 
